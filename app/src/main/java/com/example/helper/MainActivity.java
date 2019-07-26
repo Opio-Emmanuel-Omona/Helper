@@ -1,7 +1,6 @@
 package com.example.helper;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -76,11 +75,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
                 return true;
+
             case R.id.item2:
-                Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, Text2Speak.class);
+                startActivity(intent);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
 
