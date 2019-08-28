@@ -15,7 +15,7 @@ import com.example.helper.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TimerActivity extends AppCompatActivity {
+public class TimerActivity extends AppCompatActivity implements AlarmInterface {
 
     TimePicker timePicker;
     TextClock textClock;
@@ -56,7 +56,13 @@ public class TimerActivity extends AppCompatActivity {
 
     }
 
-    String alertTime() {
+    @Override
+    public void setAlarm(String time) {
+
+    }
+
+    @Override
+    public String alertTime() {
         int alarmHour = timePicker.getHour();
         int alarmMin = timePicker.getMinute();
 
