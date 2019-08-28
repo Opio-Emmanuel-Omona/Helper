@@ -4,6 +4,6 @@ public interface AlarmInterface {
 
     void setAlarm(String time);
 
-    String alertTime();
+    String alertTime()
 
 }
