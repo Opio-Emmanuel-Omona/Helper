@@ -1,6 +1,6 @@
 package com.example.helper.alarm;
 
-interface AlarmInterface {
+public interface AlarmInterface {
 
     fun setAlarm(time: String): String
 
