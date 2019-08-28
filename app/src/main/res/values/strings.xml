@@ -3,4 +3,6 @@
     <string name="microphone">Microphone to click</string>
     <string name="text2speechText">Type something</string>
     <string name="speechButton">Speak</string>
+    <string name="stop">stop</string>
+    <string name="remind_me">What should I remind you</string>
 </resources>

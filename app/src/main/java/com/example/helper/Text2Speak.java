@@ -1,16 +1,23 @@
 package com.example.helper;
 
+import android.content.Context;
 import android.content.Intent;
+import android.inputmethodservice.Keyboard;
+import android.inputmethodservice.KeyboardView;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -18,7 +25,7 @@ import java.util.Locale;
 public class Text2Speak extends AppCompatActivity {
 
     Button speakButton;
-    EditText text2speachText;
+    EditText text2speechText;
 
     TextToSpeech textToSpeech;
 
@@ -27,7 +34,7 @@ public class Text2Speak extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text2speak);
 
-        text2speachText = findViewById(R.id.text2speechText);
+        text2speechText = findViewById(R.id.text2speechText);
 
         speakButton = findViewById(R.id.speechButton);
         speakButton.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +62,25 @@ public class Text2Speak extends AppCompatActivity {
 
             }
         });
+
+        text2speechText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    //do what you want on the press of 'done'
+                    speak();
+                }
+                return false;
+            }
+        });
+
+        InputMethodManager ime = (InputMethodManager) this.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if(ime!=null) {
+            ime.showInputMethodPicker();
+        }
     }
 
     private void speak() {
-        String text = text2speachText.getText().toString();
+        String text = text2speechText.getText().toString();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
