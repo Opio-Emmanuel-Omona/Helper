@@ -1,9 +1,9 @@
-package com.example.helper.alarm;
+package com.example.helper.alarm
 
-public interface AlarmInterface {
+interface AlarmInterface {
 
-    void setAlarm(String time);
+    fun setAlarm(time: String)
 
-    String alertTime();
+    fun alertTime(): String
 
 }
