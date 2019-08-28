@@ -1,4 +1,4 @@
-package com.example.helper.alarm;
+package com.example.helper.alarm
 
 public interface AlarmInterface {
 
